@@ -1,6 +1,6 @@
 # Numpy
 
-딥러닝을 구현하다보면 행렬 계산이 많이 나온다. 따라서 행렬계산에 특화된 라이브러리라고 볼 수 있다.<br>
+딥러닝을 구현하다보면 행렬 계산이 많이 나온다. 따라서 행렬계산에 특화된 라이브러리라고 볼 수 있다.
 Numpy는 여러가지의 method를 가지고 있고, 자주 쓰는 method는 아래와 같다.
 - 수치계산에 특화된 matmul, broadcast
 - 형태를 바꾸는 flatten, reshape
@@ -10,9 +10,7 @@ Numpy는 여러가지의 method를 가지고 있고, 자주 쓰는 method는 아
 여기에 다 정리하지 못하는 여러가지 파워풀한 method들이 존재한다. 자세한 method가 궁금하다면 https://numpy.org/ 를 참조하자.
 numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으므로 자주 보게 될 것이다.<br>
 
-<br>
-
- - Shape 변환
+ - ## Shape 변환
     
     <code>
 
@@ -54,10 +52,10 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> 1
         print(x2.ndim)
         >>> 2
-
+        
     </code>
+- ## Type 확인
 
-- Type 확인
     <code>
 
         """
@@ -80,7 +78,8 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     </code>
 
-- Broadcast
+- ## Broadcast
+
     <code>
 
         """
@@ -114,7 +113,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     </code>
 
-- index
+- ## indexing & slicing
 
     <code>
 
@@ -136,7 +135,8 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     </code>
 
-- nditer (출처 : https://github.com/4Moyede/DeepLearning_Basic/blob/main/note/01_numpy.md)
+- ## nditer 
+    (출처 : https://github.com/4Moyede/DeepLearning_Basic/blob/main/note/01_numpy.md)
 
     <code>
 
@@ -155,7 +155,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     </code>
 
-- Axis (None,0,1,2)
+- ## Axis (None,0,1,2)
 
     ![axis](../image/axis.jpg)
 
@@ -165,7 +165,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
     - axis=1 : column
     - axis=2 : depth
 
-    ## 예제 array 생성
+    ### 예제 array 생성
     <code>
     
         >>> arr = np.arange(0, 32)
@@ -187,7 +187,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
     <img src="../image/shape1.png" width="40%" height="50%">
     <img src="../image/shape2.jpg" width="55%" height="70%">
 
-    ## case 1. axis=None
+    ### case 1. axis=None
 
     <code>
 
@@ -199,7 +199,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     </code>
 
-    ## case 2. axis=0
+    ### case 2. axis=0
 
     <img src="../image/axis0.png" width="50%" height="70%">
     <img src="../image/axis0-cube.jpg" width="45%" height="70%">
@@ -219,7 +219,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     </code>
 
-    ## case 3. axis=1
+    ### case 3. axis=1
 
     <img src="../image/axis1.png" width="50%" height="70%">
     <img src="../image/axis1-cube.jpg" width="45%" height="70%">
@@ -240,7 +240,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
             [52, 54, 56, 58]])
     </code>
 
-    ## case 4. axis=2
+    ### case 4. axis=2
 
     <img src="../image/axis2.png" width="50%" height="70%">
     <img src="../image/axis2-cube.jpg" width="45%" height="70%">
@@ -265,4 +265,5 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
 ## Note
 
-numpy는 복잡한 연산을 빠르게 실행해야하기 떄문에, C/C++로 이루어져있다. 이 때 파이썬은 단지 "중개자" 역힐을 하는 것이다. 단지 파이썬이 C/C++로 이루어져있는 라이브러리를 불러오기 때문에 성능이 떨어지지 않고 우리가 쓸 수 있는 것이다.
+numpy는 복잡한 연산을 빠르게 실행해야하기 떄문에, C/C++로 이루어져있다. 이 때 파이썬은 단지 "중개자" 역힐을 하는 것이다. 
+단지 파이썬이 C/C++로 이루어져있는 라이브러리를 불러오기 때문에 성능이 떨어지지 않고 우리가 쓸 수 있는 것이다.
