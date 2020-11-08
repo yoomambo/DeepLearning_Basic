@@ -31,9 +31,12 @@ Input signal를 받아서 Input signal의 총합을 Output signal로 변환하�
 - sigmoid, tanh, ReLU, ELU 미분 값 (역전파 때 중요)
     <img src=../image/activation_function_derivative.png width=70%>
 - identity : 항등함수, _**Regression에 주로 사용한다.**_
+  
     <img src=../image/identity_function.png width=40%>
 - softmax : 모든 input signal을 받고 출력한다. _**classification에 주로 사용한다.**_
+  
     <img src=../image/softmax.jpeg width=40%>
+    
     - softmax 구현시 주의점
       - softmax는 지수함수로 이루어져 있기 때문에, 오버플로의 문제점이 존재. input signal 중 max값을 input에 다 빼준다
       - softmax를 이용하여 모델을 training한 후, predict할 때는 softmax는 computing power를 많이 잡아먹기에 생략

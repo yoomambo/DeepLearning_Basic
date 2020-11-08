@@ -17,7 +17,8 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         """
         목적 : 행렬의 shape을 변환해주는 기능.
         
-        DeepLearning은 layer를 지나면서 layer들에 연결되어있는 weight들을 계산하는 방법으로 학습을 한다. 이 때, weight들은 모두 Tensor, 행렬들로 이루어져있고, Tensor 행렬들의 계산이다. 
+        DeepLearning은 layer를 지나면서 layer들에 연결되어있는 weight들을 계산하는 방법으로 학습을 한다.
+        이 때, weight들은 모두 Tensor, 행렬들로 이루어져있고, Tensor 행렬들의 계산이다. 
         각 layer와 연결되어있는 weight들, 행렬들이 가지는 shape은 연구자가 자유자재로 변형하기 때문에 shape의 변환에 대해 잘 알아야한다.
         """
 
