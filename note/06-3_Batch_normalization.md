@@ -29,7 +29,7 @@ $$ X = \frac{x-\mu}{\sigma} $$
 
 ### normalization + DNN
 
-<img src="../image/normalization.png">
+<img src="../image/normalization.PNG">
 
 ### 방법 1. normalization
 

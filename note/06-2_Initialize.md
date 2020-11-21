@@ -4,7 +4,7 @@
 
 ## 1. 초기값을 모두 동일하게 하면?
 
-<img src="../image/Weight0.jpg">
+<img src="../image/Weight0.jpg" width=60%>
 
 위의 그림처럼 모든 weight들을 동일하게 주었을 때, output들의 값은 모두 $x+y+z$로 동일하게 된다. 
 
@@ -50,7 +50,7 @@ _**Xavier 방법을 쓰니 sigmoid activation function을 거쳐도 gradient van
 
 ### 2-2. ReLU
 
-<img src="../image/weight_relu.png">
+<img src="../image/weight_relu.PNG">
 
 ReLU 방법에서는 Xavier 방법도 먹히지 않는다. ReLU는 0이하면 무조건 0이기 때문에, 표준편차가 $\frac{1}{\sqrt{n}}$ 을 가지는 정규분포를 따르는 Xavier가 0 이하인 수가 많아 gradient vanishing이 되었다고 본다.
 

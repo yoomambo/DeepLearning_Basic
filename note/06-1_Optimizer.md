@@ -17,11 +17,11 @@
 
 위의 parameter들을 업데이트하는 개념은 동일하다.
 
-<img src="../image/BGD_SGD.png" width=50%>
+<img src="../image/BGD_SGD.PNG" width=50%>
 
 #### 2-1) 정의
 
-<img src="../image/SGD.png" width=50%>
+<img src="../image/SGD.PNG" width=50%>
 
 - BGD : 한 epoch이던, 한 batch이던 전체 데이터를 보고 update를 한다.
 - SGD : 전체 데이터가 아니라, 개별 mini-batch 하나하나씩을 본다.
@@ -107,7 +107,7 @@ Momentum 방식에서는 이동 벡터 $v_t$ 를 계산할 때 현재 위치에�
 
 ## 5. Adagrad
 
-<img src="../image/Adagrad.jpg" width=80%>
+<img src="../image/Adagrad.jpg" width=70%>
 
 > 변수들을 update할 때 각각의 변수마다 step size를 다르게 설정해서 이동하는 방식이다. 
 > 
@@ -169,7 +169,7 @@ $$\hat{v_t}=\frac{v_{t}}{1−β^{t}_{2}}$$
 $$w_{t+1}=w_{t}−\frac{η}{\sqrt{\hat{v_t}+ϵ}}\hat{m_t}$$
 보통 $β_1$ 로는 0.9, $β_2$ 로는 0.999, $ϵ$ 으로는 10−8 정도의 값을 사용한다고 한다.
 
-<img src="..image/../../image/optimizer_compare.png">
+<img src="..image/../../image/optimizer_compare.png" widht=40%>
 
 위의 그림은 SGD, Momentum, Adagrad, Adam을 비교한 그림이다.
 
