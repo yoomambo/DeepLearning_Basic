@@ -63,11 +63,11 @@
     * 5.7 오차역전파법 구현하기 
     * 5.8 정리 
 - 6장 학습 관련 기술들
-    * [6.1 매개변수 갱신]((note/06_1_Optimizer.md))
-    * [6.2 가중치의 초깃값](note/06_2_Initialize.md)
-    * [6.3 배치 정규화](note/06_3_Batch_normalization.md)
-    * [6.4 바른 학습을 위해](note/06_3_Batch_normalization.md)
-    * [6.5 적절한 하이퍼파라미터 값 찾기]((note/06_3_Batch_normalization.md))
+    * [6.1 매개변수 갱신]((note/06-1_Optimizer.md))
+    * [6.2 가중치의 초깃값](note/06-2_Initialize.md)
+    * [6.3 배치 정규화](note/06-3_Batch_normalization.md)
+    * [6.4 바른 학습을 위해](note/06-3_Batch_normalization.md)
+    * [6.5 적절한 하이퍼파라미터 값 찾기]((note/06-3_Batch_normalization.md))
     * 6.6 정리 
     * [6.7 weight decay](note/06-7_weight_decay.md)
 - 7장 합성곱 신경망(CNN)
