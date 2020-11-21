@@ -62,13 +62,14 @@
     * 5.6 Affine/Softmax 계층 구현하기 
     * 5.7 오차역전파법 구현하기 
     * 5.8 정리 
-- [6장 학습 관련 기술들](note/6_Techinique.md)
-    * 6.1 매개변수 갱신
-    * 6.2 가중치의 초깃값
-    * 6.3 배치 정규화 
-    * 6.4 바른 학습을 위해
-    * 6.5 적절한 하이퍼파라미터 값 찾기
+- 6장 학습 관련 기술들
+    * [6.1 매개변수 갱신]((note/6_1_Optimizer.md))
+    * [6.2 가중치의 초깃값](note/6_2_Initialize.md)
+    * [6.3 배치 정규화](note/6_3_Batch_normalization.md)
+    * [6.4 바른 학습을 위해](note/6_3_Batch_normalization.md)
+    * [6.5 적절한 하이퍼파라미터 값 찾기]((note/6_3_Batch_normalization.md))
     * 6.6 정리 
+    * [6.7 weight decay](note/)
 - 7장 합성곱 신경망(CNN)
     * 7.1 전체 구조 
     * 7.2 합성곱 계층 
