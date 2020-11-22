@@ -70,7 +70,7 @@
     * [6.5 적절한 하이퍼파라미터 값 찾기]((note/06-3_Batch_normalization.md))
     * 6.6 정리 
     * [6.7 weight decay](note/06-7_weight_decay.md)
-- 7장 합성곱 신경망(CNN)
+- [7장 합성곱 신경망(CNN)](note/07_CNN.md)
     * 7.1 전체 구조 
     * 7.2 합성곱 계층 
     * 7.3 풀링 계층 
