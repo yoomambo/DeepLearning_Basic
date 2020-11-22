@@ -20,8 +20,7 @@
 - filter, kernel, winodw : input data와 연산하는 layer
 - stride : filter를 적용하는 움직임의 간격
 - pooling : 가로 세로방향의 공간을 줄이는 연산
-- channel : 
-
+- channel : data의 depth
 
 ## 4. FC vs CNN
 
@@ -31,7 +30,7 @@
 
 ## 5. CNN 연산
 
-## 5-1. Filter
+### 5-1. Filter
 
 <img src="../image/cnn_calculation.png" width = 80%>
 
@@ -69,14 +68,14 @@ bias 같은 경우는 _**broadcast**_ 를 통해서 output feature map에 적용
 
 stride가 2로 window를 옮길 때의 그림
 
-## 5-4. output size 계산방법
+### 5-4. output size 계산방법
 
 $$OH = \frac{H+2P-FH}{S} + 1$$
 $$OW = \frac{W+2P-FW}{S} + 1$$
 
 출력크기가 정수가 아니면, 오류를 내는 대응을 해야한다. 하지만 다른 프레임워크에서는 가까운 정수로 반올림하거나, 특별한 에러를 내지않고 진행하도록 구현하는 경우도 있다.
 
-## 5-5. Pooling
+### 5-5. Pooling
 
 <img src="../image/cnn_pooling.png" width = 80%>
 
