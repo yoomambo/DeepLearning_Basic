@@ -1,9 +1,10 @@
 # 신경망 학습 (Neural Network Training)
 
-## 학습
-    trained-data를 이용하여 weight들의 최적값을 획득하게 되는 행위를 말한다.
+## 1. 학습
 
-즉, _**기계학습, Machine Learning은 data를 활용해서 data들의 feature들을 추출, feature들의 pattern을 분석, 분석된 pattern을 학습하는 행위를 말한다.**_
+> trained-data를 이용하여 weight들의 최적값을 획득하게 되는 행위를 말한다.
+> 
+> 즉, _**기계학습, Machine Learning은 data를 활용해서 data들의 feature들을 추출, feature들의 pattern을 분석, 분석된 pattern을 학습하는 행위를 말한다.**_
 
 <img src=../image/ML.png>
 
@@ -15,13 +16,20 @@
 > Deep Learning을 end to end machine learning 이라고 합니다.
 > 데이터에서 목표한 결과를 사람의 개입 없이 얻는다는 뜻을 담고 있죠. (p110)
 
-## 손실함수 (Loss Function)
+## 2. 전체적인 과정
+
+1. MiniBatch
+2. 기울기 산출
+3. Backpropagation에 의한 기울기 업데이트
+4. 반복
+
+## 3. 손실함수 (Loss Function)
 
 _**신경망이 제대로된 학습을 했는지에 대한 수치를 알려주는 지표로 최적의 매개변수의 값을 탐색할 때 손실함수를 쓴다.**_    
 손실함수는 max로 향할수도 있지만, 대부분 손실 함수의 값을 최소로 줄이는 것을 목표로한다.
 손실함수는 직접 tuning 할 수 있지만, 오차제곱합, 교차 엔트로피 오차를 주로 사용한다.
 
-### 왜 손실함수를 써야할까?
+### 3-1. 왜 손실함수를 써야할까?
 
     손실함수의 목적은 신경망 모델의 높은 정확도를 이끌어내는 weight들을 찾는 것이다.
 
@@ -38,11 +46,11 @@ _**신경망이 제대로된 학습을 했는지에 대한 수치를 알려주�
 
 _**기울기가 0이 되지 않아 신경망이 어느 지점에서나 올바르게 학습이 가능한 것이다.**_
 
-### 1. 오차제곱합 (Sum of Square for Error, SSE)
+#### 1) 오차제곱합 (Sum of Square for Error, SSE)
 
 $L = {1 \over 2}Σ_k(y_k-t_k)^2$
 
-### 2. 교차 엔트로피 오차 (cross entropy error)
+#### 2) 교차 엔트로피 오차 (cross entropy error)
 
 <img src=../image/cross_entropy.png width=50%>
 
@@ -53,19 +61,17 @@ $log$는 자연로그 e이고, $y_k$는 신경망의 출력, $t_k$는 정답에 
 
 나중에 이 부분을 code로 구현해보면 아래와 같다.
 
-<code>
-
+```python
     def cross_entropy_error(y,t):
         delta = 1e-7
         return -np.sum(t*log(y + delta))
-
-</code>
+```
 
 **여기에서 delta를 추가해준 이유는, log의 발산을 막기 위함이다.**
 
 만약 신경망의 출력이 0이면 파이썬은 -inf 를 출력할 것이다. 따라서 발산을 막기위해 작은 숫자를 더해준다.
 
-### 3. 미니배치 학습
+#### 3) 미니배치 학습
 
 $L =  - \frac{1}{N}\sum_{n}\sum_{k}{t_{nk}}\log{y_{nk}}$
 
@@ -79,14 +85,14 @@ Data가 $N$개 라면, $t_{nk}$는 n번째 데이터의 k번째 값, 정답 레�
     
 이를 _**미니배치라**_고 한다.
 
-## 기울기 (gradient)
+## 4. 기울기 (gradient)
 
 
-### 1. 정의
+### 4-1. 정의
 <img src=../image/gradient_func.png width=50%>
 
 위와 같은 그림을 가지는 손실함수가 있다고 하자.
-이 때, $(\frac{\partial{f}}{\partial x_0}, \frac{\partial{f}}{\partial x_1})$ 처럼 모든 변수의 편미분을 벡터로 정리한 것을 _**기울기**_라고 한다.
+> 이 때, $(\frac{\partial{f}}{\partial x_0}, \frac{\partial{f}}{\partial x_1})$ 처럼 모든 변수의 편미분을 벡터로 정리한 것을 _**기울기**_라고 한다.
 
 <img src=../image/gradient_graph.png width=50%>
 
@@ -94,29 +100,28 @@ Data가 $N$개 라면, $t_{nk}$는 n번째 데이터의 k번째 값, 정답 레�
 그림을 보면 _**기울기는 손실함수가 가장 낮은 곳으로 향하도록 방향을 잡아주는 수치이다.**_
 _**즉, 기울기가 가르키는 쪽은 각 위치에서 함수의 출력값을 가장 크게 줄이는 방향이다.**_
 
-<code>
-
-    def _numerical_gradient(f, x): 
-        h = 1e-4 # 0.0001 # 중심 차분을 써야 오류가 안 생김
-        grad = np.zeros_like(x) # x와 형상이 같은 배열을 생성 
+```python
+def _numerical_gradient(f, x): 
+    h = 1e-4 # 0.0001 # 중심 차분을 써야 오류가 안 생김
+    grad = np.zeros_like(x) # x와 형상이 같은 배열을 생성 
+    
+    for idx in range(x.size): 
+        tmp_val = x[idx] # f(x+h) 계산 
         
-        for idx in range(x.size): 
-            tmp_val = x[idx] # f(x+h) 계산 
-            
-            x[idx] = float(tmp_val) + h 
-            fxh1 = f(x) # f(x-h) 계산 
-            
-            x[idx] = tmp_val - h 
-            fxh2 = f(x) 
-            
-            grad[idx] = (fxh1 - fxh2) / (2*h) 
-            x[idx] = tmp_val # 값 복원 
-            
-        return grad
+        x[idx] = float(tmp_val) + h 
+        fxh1 = f(x) # f(x-h) 계산 
+        
+        x[idx] = tmp_val - h 
+        fxh2 = f(x) 
+        
+        grad[idx] = (fxh1 - fxh2) / (2*h) 
+        x[idx] = tmp_val # 값 복원 
+        
+    return grad
+```
 
-</code>
 
-### 2. 손실함수에서의 기울기 의미 : 경사하강법
+### 4-2. 손실함수에서의 기울기 의미 : 경사하강법
 
 위의 그림처럼 기울어진 방향으로 가야 꼭 최소지점으로 가는 것은 아니나, **그 방향으로 가야 함수의 값을 줄 일 수 있다.**
 경사법은 현 위치에서 기울어진 방향으로 일정한 간격을 두고 나아간다.
@@ -135,74 +140,72 @@ $x_0 = x_0 -\eta\frac{\partial{f}}{\partial x_0}$, $x_1 = x_1 -\eta\frac{\partia
 learning rate의 경우 hyperparameter로 사람이 직접 정해주어야 하는 변수를 말한다.
 따라서 hyperparameter의 경우 잘 조절하면서 모델의 성능을 높여야한다.
 
-### 3. 신경망에서의 기울기 의미 : 영향 정도
+### 4-3. 신경망에서의 기울기 의미 : 영향 정도
 
 <img src=../image/NN_gradient.png width=50%>
 
-<code>
+```python
+# coding: utf-8 
+import sys, os 
+sys.path.append(os.pardir) # 부모 디렉터리의 파일을 가져올 수 있도록 설정 
+import numpy as np 
+from common.functions import softmax, cross_entropy_error 
+from common.gradient import numerical_gradient 
 
-    # coding: utf-8 
-    import sys, os 
-    sys.path.append(os.pardir) # 부모 디렉터리의 파일을 가져올 수 있도록 설정 
-    import numpy as np 
-    from common.functions import softmax, cross_entropy_error 
-    from common.gradient import numerical_gradient 
+class simpleNet: 
+    def __init__(self): 
+        self.W = np.random.randn(2,3) # 정규분포로 초기화 
     
-    class simpleNet: 
-        def __init__(self): 
-            self.W = np.random.randn(2,3) # 정규분포로 초기화 
+    def predict(self, x): 
+        return np.dot(x, self.W) 
         
-        def predict(self, x): 
-            return np.dot(x, self.W) 
-            
-        def loss(self, x, t): 
-            z = self.predict(x) 
-            y = softmax(z) 
-            loss = cross_entropy_error(y, t) 
-            
-            return loss 
+    def loss(self, x, t): 
+        z = self.predict(x) 
+        y = softmax(z) 
+        loss = cross_entropy_error(y, t) 
+        
+        return loss 
 
-    x = np.array([0.6, 0.9]) 
-    t = np.array([0, 0, 1]) 
-    
-    net = simpleNet() 
-    
-    f = lambda w: net.loss(x, t) 
-    dW = numerical_gradient(f, net.W) 
-    
-    print(dW)
+x = np.array([0.6, 0.9]) 
+t = np.array([0, 0, 1]) 
 
-    >>> import gradient_simplenet as gs 
-    [[ 0.20712809 0.30619585 -0.51332394]
-     [ 0.31069213 0.45929378 -0.76998591]] 
-    
-    >>> net = gs.simpleNet()
-    >>> print(net.W)
-    [[ 0.77872534 1.68368502 1.25014485] 
-    [-1.29329159 0.30947396 -0.60716658]] 
-    
-    >>> import numpy as np 
-    >>> x = np.array([0.6, 0.9]) 
-    >>> p = net.predict(x) 
-    >>> print(p) 
-    [-0.69672723 1.28873757 0.20363699] 
-    
-    >>> np.argmax(p) 
-    1 
-    
-    >>> t = np.array([0, 1, 0]) 
-    >>> net.loss(x, t) 
-    0.38878297065251444
+net = simpleNet() 
 
-    >>> def f(W):
-            return net.loss(x, t) 
-    >>> import gradient_2d as g2 
-    >>> dW = g2.numerical_gradient(f, net.W) 
-    >>> print(dW) 
-    [[ 0.05585067 -0.19327121 0.13742053] 
-     [ 0.08377601 -0.28990681 0.2061308 ]]
+f = lambda w: net.loss(x, t) 
+dW = numerical_gradient(f, net.W) 
 
-</code>
+print(dW)
+
+>>> import gradient_simplenet as gs 
+[[ 0.20712809 0.30619585 -0.51332394]
+    [ 0.31069213 0.45929378 -0.76998591]] 
+
+>>> net = gs.simpleNet()
+>>> print(net.W)
+[[ 0.77872534 1.68368502 1.25014485] 
+[-1.29329159 0.30947396 -0.60716658]] 
+
+>>> import numpy as np 
+>>> x = np.array([0.6, 0.9]) 
+>>> p = net.predict(x) 
+>>> print(p) 
+[-0.69672723 1.28873757 0.20363699] 
+
+>>> np.argmax(p) 
+1 
+
+>>> t = np.array([0, 1, 0]) 
+>>> net.loss(x, t) 
+0.38878297065251444
+
+>>> def f(W):
+        return net.loss(x, t) 
+>>> import gradient_2d as g2 
+>>> dW = g2.numerical_gradient(f, net.W) 
+>>> print(dW) 
+[[ 0.05585067 -0.19327121 0.13742053] 
+    [ 0.08377601 -0.28990681 0.2061308 ]]
+```
 
 1. $\frac{\partial{f}}{\partial W_{23}}$은 0.206 정도 된다. 이는 h만큼 늘리면 손실함수는 0.206h 정도 된다는 것이다.
 2. $\frac{\partial{f}}{\partial W_{22}}$은 -0.29 정도 된다. 이는 h만큼 늘리면 손실함수는 -0.29h 정도 된다는 것이다.

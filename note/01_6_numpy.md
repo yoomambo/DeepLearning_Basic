@@ -12,8 +12,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
  - ## Shape 변환
     
-    <code>
-
+    ```python
         """
         목적 : 행렬의 shape을 변환해주는 기능.
         
@@ -53,12 +52,11 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> 1
         print(x2.ndim)
         >>> 2
-        
-    </code>
+    ```
+
 - ## Type 확인
 
-    <code>
-
+    ```python
         """
         목적 : 행렬 안에 element의 숫자 타입 확인해주는 기능 <br>
 
@@ -76,13 +74,11 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> x_t = x.reshape(1, x.size)
         >>> print(x_t.shape) 
         [1, 2]
-
-    </code>
+    ```
 
 - ## Broadcast
 
-    <code>
-
+    ```python
         """
         목적 : 크기가 다른 행렬들의 연산을 가능하게 해주는 기능
 
@@ -111,13 +107,11 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> a*b
         array([[ 30,  60],
                 [ 50, 100]])
-
-    </code>
+    ```
 
 - ## indexing & slicing
 
-    <code>
-
+    ```python
         """
         목적 : [] 을 이용, 행렬의 element 접근 가능하게 해주는 기능
         """
@@ -133,14 +127,12 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> y = z[[0, 1], [4, 5]]
         >>> print(y)
         [5, 12]
-
-    </code>
+    ```
 
 - ## nditer 
     (출처 : https://github.com/4Moyede/DeepLearning_Basic/blob/main/note/01_numpy.md)
 
-    <code>
-
+    ```python
         """
         목적 : 반복문 사용 가능하게 해주는 기능
         
@@ -153,8 +145,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
             idx = it.multi_index # tuple 타입의 (i, j)
             print(A[idx]) # [] 연산자로 접근 가능
             it.iternext()   
-
-    </code>
+    ```
 
 - ## Axis (None,0,1,2)
 
@@ -167,8 +158,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
     - axis=2 : depth
 
     ### 예제 array 생성
-    <code>
-    
+    ```python
         >>> arr = np.arange(0, 32)
         >>> len(arr)
         32
@@ -178,8 +168,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> v = arr.reshape([4,2,4])
         >>> v.ndim      ## v의 차원
         3 
-
-    </code>
+    ```
 
     우선 arrage를 사용해서 배열을 만들어준 후, reshape 을 통해 depth=4, row=2, column=4인 array를 만들어주었다. <br>
     앞으로 CNN이나 여러 아키텍쳐들을 활용하면서 차원의 수가 기하급수적으로 늘어나기 때문에 잘 확인해야한다.
@@ -190,23 +179,20 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
 
     ### case 1. axis=None
 
-    <code>
-
+    ```python
         """
         axis=None은 기본값으로 모든 요소의 값을 합산하여 1개의 스칼라값을 반환합니다.
         """
         >>> v.sum()     
         496
-
-    </code>
+    ```
 
     ### case 2. axis=0
 
     <img src="../image/axis0.png" width="50%" height="70%">
     <img src="../image/axis0-cube.jpg" width="45%" height="70%">
 
-    <code>
-
+    ```python
         """
         axis=0은 x축을 기준으로 여러 row를 한 개로 합치는 과정입니다.
         """
@@ -217,16 +203,14 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
         >>> res01
         array([[48, 52, 56, 60],
             [64, 68, 72, 76]])
-
-    </code>
+    ```
 
     ### case 3. axis=1
 
     <img src="../image/axis1.png" width="50%" height="70%">
     <img src="../image/axis1-cube.jpg" width="45%" height="70%">
 
-    <code>
-
+    ```python
         """
         axis=1은 y축을 기준으로 row 별로 존재하는 column들의 값을 합쳐 1개로 축소하는 과정입니다.
         """
@@ -239,15 +223,14 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
             [20, 22, 24, 26],
             [36, 38, 40, 42],
             [52, 54, 56, 58]])
-    </code>
+    ```
 
     ### case 4. axis=2
 
     <img src="../image/axis2.png" width="50%" height="70%">
     <img src="../image/axis2-cube.jpg" width="45%" height="70%">
 
-    <code>
-
+    ```python
         """
         axis=2는 z축을 기준으로 column의 depth가 가진 값을 축소하는 과정입니다.
         """
@@ -260,7 +243,7 @@ numpy는 앞으로 많이 쓸 pytorch나 tensorflow 안에 내장되어 있으�
             [ 38,  54],
             [ 70,  86],
             [102, 118]])
-    </code>
+    ```
 
     출처 : http://taewan.kim/post/numpy_sum_axis/
 
