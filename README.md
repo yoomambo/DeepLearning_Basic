@@ -1,25 +1,21 @@
-# 밑바닥부터 시작하는 딥러닝
+# 밑바닥부터 시작하는 딥러닝 + DeepLearning_Basic
 
-## Book
+## Book & Lecture
 ![book](image/book.jpg)
 
-밑바닥부터 시작하는 딥러닝(DeepLearning From Scratch, OREILLY)
-<br>
-<br>
+1. 밑바닥부터 시작하는 딥러닝(DeepLearning From Scratch, OREILLY)
+2. 2020-2 기계학습응용 by [Prof.김승룡 in korea.univ](https://www.youtube.com/playlist?list=PLCNc54m6eBRWz3tmkBPJAIdkSn6vFhtgR)
 
 ## Purpose
-지금까지 DeepLearning에 대한 기초적인 지식없이 공부했었다. <br>
-밑바닥부터 시작하는 딥러닝 책을 완파하면서 4가지의 규칙을 가지고 공부하려한다.<br>
 
-    1. DeepLearning의 기초를 쌓는다.
-    2. 현재 하고 있는 연구와의 연관성을 생각하면서 정리한다.
-    3. 공부한 부분은 마크다운으로 정리하고 README.md에 링크 걸어둔다.
-    4. 공부한 부분은 직접 Code로 구현한다.
+1. 밑바닥부터 시작하는 딥러닝 책으로 몰랐던 기초를 쌓는다.
+    1. 현재 하고 있는 연구와의 연관성을 생각하면서 정리한다.
+    2. 공부한 부분은 마크다운으로 정리하고 README.md에 링크 걸어둔다.
+    3. 공부한 부분은 직접 Code로 구현한다.
+2. 기계학습응용 수업을 들으면서 추가할 부분을 상세히 적는다.
+   1. 밑바닥부터 시작하는 딥러닝 마크다운 파일에 추가한다.
 
-<br>
 이 4가지의 규칙을 가지고 책을 공부하도록 한다.
-<br>
-<br>
 
 ## Contents
 - 1장 헬로 파이썬
@@ -80,12 +76,50 @@
     * 7.7 대표적인 CNN 
     * 7.8 정리 
 - 8장 딥러닝
-    * 8.1 더 깊게 
+    * [8.1 더 깊게](note/00_Background.md) 
     * 8.2 딥러닝의 초기 역사 
-    * 8.3 더 빠르게(딥러닝 고속화) 
+    * [8.3 더 빠르게(딥러닝 고속화)](note/08_DeepLearnig.md) 
+      * cpu vs gpu
+      * CUDA, cuDNN
+      * im2col
+      * GPU 병렬 연결
+      * 연산 정밀도와 비트수 줄이기
+        * 부동소수점
     * 8.4 딥러닝의 활용 
     * 8.5 딥러닝의 미래 
     * 8.6 정리 
+- 9장 모르는거 정리 (복습하면 x 표시)
+    - [x] XOR 한계 : p55
+    - [x] XOR 극복 : p59
+    - [x] 비선형 함수를 써야하는 이유 : p75
+    - [x] 항등함수 정의 : p91
+    - [x] softmax 정의시 프로그래밍 언어적 한계 : p93
+    - [x] sottmax를 학습할 때만 쓰고, test할 때는 버리는 이유 : p95
+    - [x] computer vision에서 feature selection하는 다양한 방법 : p109
+    - [x] cross entropy error 구현하는데 프로그래밍 언어적 한계 : p115
+    - [x] mini-batch의 정의
+    - [x] 왜 Loss Function을 써야하는가? : p119
+    - [x] 수치미분을 python으로 구현할 때 한계점 : p123
+    - [x] Affine 정의 : p171
+    - [ ] Affine 행렬 shape 계산 : p173
+    - [ ] softmax backpropagation : p177, 291
+    - [ ] TwolayerNet 구성하기 : p183
+    - [x] SGD 정의 : p190, 191
+    - [x] SGD 단점 : p192, 193
+    - [x] Momentum 정의 : p195 
+    - [x] Adagrad 정의 : p197
+    - [x] weight initialize를 동일하게 하면 안되는 이유 : p202
+    - [x] weight initialize 해야하는 이유 : p205
+    - [x] Xavier, He 정의 : p206, 207
+    - [x] Batch Normalization : p210, 211
+    - [x] Fully connected 했을 때, 이미지를 잘 분류하지 못하는 이유 : p229
+    - [x] CNN 의 weight : p231
+    - [x] filter, kernel, window 정의 : p231
+    - [x] input data의 channel수와 filter 수를 맞춰야한다 : p236
+    - [x] CUDA, cuDNN : p275
+    - [x] im2col : p275
+    - [x] 연산정밀도 비트수 줄이기 : p277, 278
+
 
 ## Source Example (Reference)
 
