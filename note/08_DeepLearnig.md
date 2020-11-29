@@ -23,7 +23,7 @@
 ### **1-3. Deep Learning에 최적화된 하드웨어는? --> 구조**
 
 <img src="../image/08_CPU_GPU.png">
-<img src="../image/08_CPU.png" width=70%>
+<img src="../image/08_CPU.PNG" width=70%>
 
 Deep Learning에 최적화된 하드웨어는 CPU와 GPU의 구조를 살펴보면 된다.
 
