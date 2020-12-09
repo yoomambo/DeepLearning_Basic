@@ -27,7 +27,7 @@
     * [1.5 Numpy](note/01_6_numpy.md)
     * 1.6 Matplotlib
     * 1.7 정리
-    * 1.8 logistic regression 
+    * [1.8 logistic regression ](note/01_8_logistic_Regression.md)
 - [2장 퍼셉트론](note/02_perceptron.md)
     * 2.1 퍼셉트론이란?
     * 2.2 단순한 논리 회로 
