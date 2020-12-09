@@ -129,8 +129,15 @@ def _numerical_gradient(f, x):
     return grad
 ```
 
+### 4-2. Loss Function에서 중요한 3가지
 
-### 4-2. 손실함수에서의 기울기 의미 : 경사하강법
+<img src=../image/lecture/gradient.PNG width=90%>
+
+1. 어디서 Loss function이 시작되느냐 : weight initialization
+2. 어느 방향으로 시작되냐 : Gradient
+3. 얼마나 움직이냐 : Learning rate
+
+### 4-3. Loss Function의 기울기 의미 : 경사하강법
 
 위의 그림처럼 기울어진 방향으로 가야 꼭 최소지점으로 가는 것은 아니나, **그 방향으로 가야 함수의 값을 줄 일 수 있다.**
 경사법은 현 위치에서 기울어진 방향으로 일정한 간격을 두고 나아간다.
@@ -146,10 +153,7 @@ $x_0 = x_0 -\eta\frac{\partial{f}}{\partial x_0}$, $x_1 = x_1 -\eta\frac{\partia
 1. learning rate가 일정 수준 크다면, 왼쪽처럼 발산하는 형태를 가진다.
 2. learning rate가 너무 작다면, optimize하는데 너무 오래걸리고, 오른쪽 그림처럼 local minimum이 2개 이상 존재하는 함수에서는 local에 빠진다는 단점이 존재한다.
 
-learning rate의 경우 hyperparameter로 사람이 직접 정해주어야 하는 변수를 말한다.
-따라서 hyperparameter의 경우 잘 조절하면서 모델의 성능을 높여야한다.
-
-### 4-3. 신경망에서의 기울기 의미 : 영향 정도
+### 4-4. 신경망에서의 기울기 의미 : 영향 정도
 
 <img src=../image/NN_gradient.png width=50%>
 

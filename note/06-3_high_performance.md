@@ -107,8 +107,10 @@ $$y = \gamma\hat{x} + \beta$$
 
 ### 2-2. 해결방법
 
-1. Hyperparameter를 조절
-2. [Regularization](06-7_regularization.md)
+1. data를 늘린다.
+2. feature 의 갯수를 줄인다. --> model을 simple하게 만든다.
+3. Hyperparameter를 조절
+4. [Regularization](06-7_regularization.md)
 
 -------------
 
@@ -172,6 +174,17 @@ iteration이 반복될수록 Training curve와 validation curve가 weight가 변
 <img src="../image/lecture/ensemble.PNG">
 
 independent model을 train 하기 전에 multiple snapshot ensemble learning 을 진행한다. 이는 learning rate를 줄여나가다가 0.1로 다시 restart 한다. 만약 그래프가 위의 그림처럼 생겼을 때 기존처럼 learning rate를 줄이면 local minimum 벗어나기 어렵지만, snapshot ensemble learning을 하게 되면 hop 하듯이 local을 벗어날 수 있다.
+
+---------------
+
+## 4. Etc
+
+1. Data 늘리기.
+2. feature를 늘리기 (regression 같은 경우)
+3. 변수를 하나씩 늘려보면서 model을 selection하자.
+4. Validation set을 활용하자
+5. K-Fold cross validation
+6. <img src="../image/lecture/bias_variance.PNG">
 
 
 ---------------
