@@ -9,6 +9,8 @@
 
 이번 챕터에서는 weight를 효율적으로 계산하는 방법인 Backpropagation을 공부하자.
 
+-------------
+
 ## 1. 계산 그래프
 
 계산 그래프는 계산과정을 그래프로 표현한 것이다. 굉장히 직관적이며, 처음에는 신경망의 연산과 변화율에 대한 연관성을 캐치하기 쉽다.
@@ -30,6 +32,8 @@
 1. **"국소적인 계산"** 으로 문제를 정의하여 문제를 단순화, _**자신과 관계된 정보만을 결과로 출력할 수 있다는 것**_ 이 장점이다. 아무리 복잡하더라도 계산그래프를 이용한다면, 쉽게 weitght들이 output에 얼마나 영향을 끼치는지 볼 수 있다.
 2. Backpropagation을 이용하여 미분을 효율적으로 사용가능하다.
 
+-------------
+
 ## 2. Chain Rule
 
 ### 2.1 정의
@@ -48,25 +52,27 @@ $\frac{\partial{z}}{\partial{z}}, \frac{\partial{z}}{\partial{t}}, \frac{\partia
 
 **즉, chain rule에 의해 국소적인 미분값을 구해도, 전체에 대한 미분값이 구해진다.**
 
+-------------
 
 ## 3. Activation Function
 
-### ReLU
+### 3-1. ReLU
 
 1. $x>0 : x, \frac{\partial{y}}{\partial{x}} = 1$
 2. $x<0 : 0, \frac{\partial{y}}{\partial{x}} = 0$
 
-### Sigmoid
+### 3-2. Sigmoid
 
-$y = \frac{1}{(1+e^{-x})}$
+1. $y = \frac{1}{(1+e^{-x})}$
+2. $\frac{\partial{y}}{\partial{x}} = (1-g(x))g(x), g(x)=\frac{1}{(1+e^{-x})}$
 
-### Affine
+### 3-3. Affine
 
 > 신경망의 forward 일 때, 수행하는 행렬의 곱은 Affine Transformation이라고 한다.
 
 지금까지의 계산 그래프는 스칼라 값만 다뤘지만, Affine은 행렬이 흐르고 있다.
 
-### Softmax & Cross Entropy
+### 3-4. Softmax & Cross Entropy
 
 #### 1) Entropy
 
@@ -89,11 +95,11 @@ $$H(x)=−\sum_{i=1}^{n}  q(x_i) log{p(x_i)}$$
 
 cross entropy 계층을 보면, $t$는 class label이고, $y$는 softmax에서 예측한 확률이다. 
 
-원래의 엔트로피는 예측한 $y\log{y}$ 이지만, cross entropy는 $t\log{y}$ 로써, class label을 softmax의 output과 곱한다.
+원래의 엔트로피는 예측한 $y\log{y}$ 이지만, _**cross entropy는 $t\log{y}$ 로써, class label을 softmax의 output과 곱한다.**_
 
-만약 실제로 정답이었던 값의 확률이 0에 근접하게 나온다면, $t\log{y}$는 값이 매우 커질 것이다. 따라서 업데이트 되는 기울기 폭도 증가할 것이다. 만약 정답이었던 값의 확률이 1에 근접하게 나온다면 0에 수렴하게되므로, 업데이트 되는 기울기 폭도 줄어들 것이다.
+_**만약 실제로 정답이었던 값의 확률이 0에 근접하게 나온다면, $t\log{y}$, 즉 loss 값은 매우 커질 것이다. 따라서 업데이트 되는 기울기 폭도 증가할 것이다. 만약 정답이었던 값의 확률이 1에 근접하게 나온다면 0에 수렴하게되므로, 업데이트 되는 기울기 폭도 줄어들 것이다.**_
 
-> 즉, cross entropy는 classify 뿐만 아니라, 잘 예측하여도 실제값과 예측값의 차이를 주어 모델을 더 완벽하게 할 수 있는 Loss Function이다.
+> 즉, cross entropy는 _**classify 뿐만 아니라, 잘 예측하여도 실제값과 예측값의 차이를 주어 모델을 더 완벽하게 할 수 있는 Loss Function**_ 이다.
 
 #### 3) cross entropy & binary cross entropy
 
@@ -110,3 +116,8 @@ _**softmax 와 cross entropy의 업데이트 되는 값을 보면 $y-t$이다.**
 
 되게 중요한 부분이니 알아두자.
 
+------------
+
+## Reference 
+
+1. [Softmax Backpropagation](https://ratsgo.github.io/deep%20learning/2017/10/02/softmax/)

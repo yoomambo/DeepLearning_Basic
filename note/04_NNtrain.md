@@ -32,7 +32,7 @@
 ### 3-1. 정의
 
 > _**신경망이 제대로된 학습을 했는지에 대한 수치를 알려주는 지표로 최적의 매개변수의 값을 탐색할 때 손실함수를 쓴다.**_    
-손실함수는 max로 향할수도 있지만, 대부분 손실 함수의 값을 _**최소**_로 줄이는 것을 목표로한다.
+손실함수는 max로 향할수도 있지만, 대부분 손실 함수의 값을 _**최소**_ 로 줄이는 것을 목표로한다.
 손실함수는 직접 tuning 할 수 있지만, MSE(오차제곱합), Cross Entropy Error(교차 엔트로피 오차)를 주로 사용한다.
 
 ### 3-2. 왜 손실함수를 써야할까?
@@ -63,21 +63,19 @@ $$L = \frac{1}{2}Σ_k(y_k-t_k)^2$$
 
 교차 엔트로피 오차 방법은 $L = -Σt_k\log{y_k}$ 과 같다.
 
-$log$는 자연로그 e이고, $y_k$는 신경망의 출력, $t_k$는 정답에 해당하는 레이블만 1이고 나머지는 0인 one-hot encoding이다. _**따라서 실질적으로 정답을 맞춘 경우에만 Loss를 조절하는 단계이다.**_
+$log$는 자연로그 e이고, $y_k$는 신경망의 출력, $t_k$는 정답에 해당하는 레이블만 1이고 나머지는 0인 one-hot encoding이다. 위의 그래프에서는 x라고 해당된 부분은 $y_k$, 신경망의 출력에 해당된다. _**따라서 실질적으로 정답을 맞춘 경우에만 Loss를 조절하는 단계이다.**_
 
 **즉, $y_k$가 0에 가까워질수록 Loss가 커지고, $y_k$가 출력이 커질수록 Loss가 작아진다.**
 
 나중에 이 부분을 code로 구현해보면 아래와 같다.
 
 ```python
-    def cross_entropy_error(y,t):
-        delta = 1e-7
-        return -np.sum(t*log(y + delta))
+def cross_entropy_error(y,t):
+    delta = 1e-7
+    return -np.sum(t*log(y + delta))
 ```
 
-**여기에서 delta를 추가해준 이유는, log의 발산을 막기 위함이다.**
-
-만약 신경망의 출력이 0이면 파이썬은 -inf 를 출력할 것이다. 따라서 발산을 막기위해 작은 숫자를 더해준다.
+**여기에서 delta를 추가해준 이유는, log의 발산을 막기 위함이다.** 만약 신경망의 출력이 0이면 파이썬은 -inf 를 출력할 것이다. 따라서 발산을 막기위해 작은 숫자를 더해준다.
 
 #### 3) mini-batch 학습
 
@@ -92,6 +90,8 @@ $L =  - \frac{1}{N}\sum_{n}\sum_{k}{t_{nk}}\log{y_{nk}}$
 
 Data가 $N$개 라면, $t_{nk}$는 n번째 데이터의 k번째 값, 정답 레이블을 의미한다.
 마지막에 보면 $N$을 나누어 정규화하고 있다. $N$을 나눔으로써 _**평균손실함수**_ 를 구하는 것이다. 하지만, _**모든 데이터를 대상으로 손실함수의 합을 구하려면 엄청나게 오래걸린다.**_ 만약 data가 6만개가 있다고 가정하면, 이는 굉장한 낭비이다. 
+
+_**따라서 mini-batch를 해서 approximate value인 평균손실함수를 대신 구해서 weight를 update한다.**_
 
 -----------------
 
@@ -165,7 +165,7 @@ import numpy as np
 from common.functions import softmax, cross_entropy_error 
 from common.gradient import numerical_gradient 
 
-class simpleNet: 
+class SimpleNet: 
     def __init__(self): 
         self.W = np.random.randn(2,3) # 정규분포로 초기화 
     
@@ -179,21 +179,11 @@ class simpleNet:
         
         return loss 
 
-x = np.array([0.6, 0.9]) 
-t = np.array([0, 0, 1]) 
+>>> x = np.array([0.6, 0.9]) 
+>>> t = np.array([0, 0, 1]) 
 
-net = simpleNet() 
+>>> net = SimpleNet() 
 
-f = lambda w: net.loss(x, t) 
-dW = numerical_gradient(f, net.W) 
-
-print(dW)
-
->>> import gradient_simplenet as gs 
-[[ 0.20712809 0.30619585 -0.51332394]
-    [ 0.31069213 0.45929378 -0.76998591]] 
-
->>> net = gs.simpleNet()
 >>> print(net.W)
 [[ 0.77872534 1.68368502 1.25014485] 
 [-1.29329159 0.30947396 -0.60716658]] 
@@ -213,8 +203,7 @@ print(dW)
 
 >>> def f(W):
         return net.loss(x, t) 
->>> import gradient_2d as g2 
->>> dW = g2.numerical_gradient(f, net.W) 
+>>> dW = numerical_gradient(f, net.W) 
 >>> print(dW) 
 [[ 0.05585067 -0.19327121 0.13742053] 
     [ 0.08377601 -0.28990681 0.2061308 ]]

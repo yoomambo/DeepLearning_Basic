@@ -34,7 +34,7 @@ Input signal를 받아서 Input signal의 총합을 Output signal로 변환하�
     - sigmoid : 보통 binary classification 할 때 주로 사용하며 퍼셉트론의 업그레이드 버젼
       - 문제점
         1. Gradient Vanishing : 미분해보면 $|(1-f(x))f(x)|<1$ 이기에 layer를 거칠수록 소실된다.
-        2. output이 not zero centered : $\frac{\partial L}{\partial p} >0 , \frac{\partial L}{\partial w} >0$, 의존적이다.
+        2. output이 not zero centered : $\frac{\partial L}{\partial p} >0 , \frac{\partial L}{\partial w} >0$, 의존적이다. p가 양수여도 w는 음수일 수도 있다. 따라서 ZigZag 처럼 기울기가 업데이트 될 것이다.
         3. Exponential computation is expensive
     - tanh : $F(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$, sigmoid와 비슷하지만 0 근처에서 경사가 sigmoid보다 좀 더 가파름
       - 문제점

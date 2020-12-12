@@ -73,6 +73,8 @@ stride가 2로 window를 옮길 때의 그림
 $$OH = \frac{H+2P-FH}{S} + 1$$
 $$OW = \frac{W+2P-FW}{S} + 1$$
 
+$FH, FW$ : filter의 height, width를 말한다.
+
 출력크기가 정수가 아니면, 오류를 내는 대응을 해야한다. 하지만 다른 프레임워크에서는 가까운 정수로 반올림하거나, 특별한 에러를 내지않고 진행하도록 구현하는 경우도 있다.
 
 ### 5-5. Pooling
@@ -97,13 +99,13 @@ $$OW = \frac{W+2P-FW}{S} + 1$$
 
 <img src="../image/cnn_3d.png" width = 70%>
 
-_**filter의 channel수를 input data의 channel의 수에 맞게 쌓아야한다.**_ data들의 shape 을 망가뜨리지 않고 data들의 상관관계를 파악할 수 있다.
+_**filter의 channel수를 input data의 channel의 수에 맞게 쌓아야한다. 그 이유는 channel 마다 filter안에 weight 값들이 다르기 때문이다. 또한 filter의 channel수 data들의 shape 을 망가뜨리지 않고 data들의 상관관계를 파악할 수 있다.**_
 
 ### Batch 처리까지한 CNN
 
 <img src="../image/cnn_3d-2.png" width = 120%>
 
-한번에 N개의 data를 다루는 연산이다.
+한번에 N개의 data를 다루는 연산으로 변하면서 input data가 3차원에서 4차원으로 변한다.
 
 ## 7. CNN visualization
 
@@ -118,6 +120,10 @@ filter의 weight들이 학습하기 전에는 형태를 알아보기 힘들다�
 <img src="../image/cnn_weight-visualization-2.png">
 
 학습된 filter들을 image에 씌워보았더니, 각각 filter가 의미하는 부분이 명확하게 보이는 것을 볼수 있다.
+
+> 개인적으로 이 부분이 제일 중요한 것 같다. 
+> _**Deep Learning은 inpretable한 구조가 제일 좋은 구조라고 생각한다.**_ 
+> 이처럼 각 filter안에 weight들이 어떠한 의미를 가지는지 보여주는 것 자체가 굉장히 의미있다고 생각한다.
 
 ### 7-3. depth 에 따흔 추출 정보의 변화
 

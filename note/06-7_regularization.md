@@ -13,6 +13,7 @@ $$\frac{1}{N}\Sigma L(f_W(x_i), y_i) + \lambda\Omega(w)$$
 - L2 : $\Omega(w)= \Sigma_{k,l}W_{k,l}^2$
 - L1 : $\Omega(w)= \Sigma_{k,l}|W_{k,l}|$
 - ElasticNet : $\Omega(w)= \Sigma_{k,l}\beta W_{k,l}^2 + |W_{k,l}|$
+- $\lambda$ : hyperparameter
 
 <img src="../image/weight_decay_2.png">
 
@@ -20,16 +21,16 @@ $$\frac{1}{N}\Sigma L(f_W(x_i), y_i) + \lambda\Omega(w)$$
 
 이 패널티 항목으로 많이 쓰이는 것이 L1 Regularization과 L2 Regularization이다. Weight decay 를 적용할 경우 위 두번째 그림처럼 Overfitting에서 벗어날 수 있다.
 
-### 1-2. L1, L2 의 차이점
+### 1-2. L1 vs L2
 
-<img src="../image/lecture/L1L2_norm.PNG" width=80%>
+<img src="../image/lecture/L1L2_norm.PNG" width=40%>
 
 $$a = (0.3, -0.3, 0.4)$$ $$b = (0.5, -0.5, 0)$$
 
-<img src="../image/lecture/L1L2_norm_vector.PNG" width=80%>
+<img src="../image/lecture/L1L2_norm_vector.PNG" width=60%>
 
-- 초록샌 선이 L2 norm
-- 빨간, 파란, 노란 선은 다른 경로를 움직m이다. 그 이유는 위의 그림을이지만 사실 모두 같은 L1 Nor 보면 나와있다. a,b라는 벡터는 다른 성분이지만 L1을 거치면 같은 성분으로 바뀐다.
+- 초록샌 선 : L2 norm
+- 빨간, 파란, 노란 선 : 다른 경로를 움직이는 L1 norm이다. 그 이유는 그림을 보면 나와있다. a,b라는 벡터는 다른 성분이지만 L1을 거치면 같은 성분으로 바뀌기 때문이다.
 
 ------------
 
@@ -39,7 +40,7 @@ $$a = (0.3, -0.3, 0.4)$$ $$b = (0.5, -0.5, 0)$$
 
 > Dropout은 일정 비율 이상으로 node를 버리는 것이다. 보통 0.5가 일반적이다.
 
-<img src="../image/lecture/Dropout_ensemble.PNG" width=70%>
+<img src="../image/lecture/Dropout_ensemble.PNG" width=50%>
 
 _**또한 Dropout은 큰 규모의 ensemble이라고 생각하자.**_
 

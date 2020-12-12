@@ -44,22 +44,22 @@ np.random.randn(node_num, node_num) / np.sqrt(node_num)
 일단 $w$ 는 $\frac{(x-\mu)}{\sigma}$를 한 값이고, random.randn은 평균이 0이고, 표준편차가 1인 정규분포의 값을 가진다. 이 값에서 $\sqrt{n}$을 나눠주어야
 $\frac{(x-\mu)}{\frac{1}{\sqrt{n}}}$ 을 한 것 과 같아진다.
 
-<img src="../image/xavier_2.png" width=80%>
+<img src="../image/xavier_2.PNG" width=80%>
 
 _**Xavier 방법을 쓰니 sigmoid activation function을 거쳐도 gradient vanishing이나 신경망의 표현력이 소실되는 현상은 벌어지지 않는다.**_
 
 ### 2-2. ReLU
 
-<img src="../image/weight_relu.PNG">
+<img src="../image/weight_relu.png">
 
 ReLU 방법에서는 Xavier 방법도 먹히지 않는다. ReLU는 0이하면 무조건 0이기 때문에, 표준편차가 $\frac{1}{\sqrt{n}}$ 을 가지는 정규분포를 따르는 Xavier가 0 이하인 수가 많아 gradient vanishing이 되었다고 본다.
 
 따라서 ReLU에서만은 다른 초기화 값으로 해야하고, 그 방법 중에 하나가 He 방법이다.
 
-### He
+### He (MSRA)
 
 Xavier가 표준편차가 $\frac{1}{\sqrt{n}}$ 을 가지는 정규분포를 따르는 방법이라면, _**He는 표준편차가 $\frac{2}{\sqrt{n}}$ 을 가지는 정규분포를 따르는 방법,**_ Xavier 보다 좀 더 표준편차가 넓은 정규분포를 가지는 숫자라는 것을 알수 있다.
 
-우리는 _**ReLU의 특성인, 0 이하인 부분에서는 output이 모두 0이라는 점에서 He가 표준편차가 크게 하여 좀 더 weight 값들을 넓게 퍼트리려 한다**_고 직관적으로 알수 있다.
+우리는 _**ReLU의 특성인, 0 이하인 부분에서는 output이 모두 0이라는 점에서 He가 표준편차가 크게 하여 좀 더 weight 값들을 넓게 퍼트리려 한다**_ 고 직관적으로 알수 있다.
 
 실제로 위의 그림을 보면, Xavier는 layer를 거칠수록 weight들이 왼쪽으로 쏠림 현상이 존재하는데, He은 표준편차가 상대적으로 커서, 여러 곳에 분포하고, ReLU의 여러 layer들을 거쳐도 전반적으로 고르게 퍼져있다.

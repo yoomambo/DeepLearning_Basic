@@ -78,7 +78,11 @@ $$\mu_B \leftarrow \frac{1}{m}\sum_{i=1}^m x_i$$ $$\sigma_B^2 \leftarrow \frac{1
 $$y = \gamma\hat{x} + \beta$$
 
 > $\gamma$는 scale, $\beta$는 shift 작업을 하며, 이 작업이 Regularizaiton에 해당된다고 볼수 있다.
-> 
+
+<img src="../image/batch-normalization.jpg">
+
+실제로 각 (0,0)의 channel 갯수 * batch 갯수만큼 data를 batch normalization을 했을 때의 신경망에서 어떠한 분포를 나타내는지 보여주는 그림이다.
+
 ### 2-4. 장점
 
 1. 학습 속도 개선
