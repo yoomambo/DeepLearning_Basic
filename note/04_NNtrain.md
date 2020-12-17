@@ -101,7 +101,7 @@ _**따라서 mini-batch를 해서 approximate value인 평균손실함수를 대
 <img src=../image/gradient_func.png width=50%>
 
 위와 같은 그림을 가지는 손실함수가 있다고 하자.
-> 이 때, $(\frac{\partial{f}}{\partial x_0}, \frac{\partial{f}}{\partial x_1})$ 처럼 모든 변수의 편미분을 벡터로 정리한 것을 _**기울기**_라고 한다.
+> 이 때, $(\frac{\partial{f}}{\partial x_0}, \frac{\partial{f}}{\partial x_1})$ 처럼 모든 변수의 편미분을 벡터로 정리한 것을 _**기울기**_ 라고 한다.
 
 <img src=../image/gradient_graph.png width=50%>
 

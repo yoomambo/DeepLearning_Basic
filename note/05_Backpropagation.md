@@ -118,6 +118,16 @@ _**softmax 와 cross entropy의 업데이트 되는 값을 보면 $y-t$이다.**
 
 ------------
 
+## 4. Backpropagation 증명
+
+<img src="../image/Backpropagation_1.PNG">
+
+<img src="../image/Backpropagation_2.PNG">
+
+<img src="../image/Backpropagation_3_softmax.PNG">
+
+
+
 ## Reference 
 
 1. [Softmax Backpropagation](https://ratsgo.github.io/deep%20learning/2017/10/02/softmax/)

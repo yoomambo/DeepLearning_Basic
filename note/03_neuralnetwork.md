@@ -1,6 +1,7 @@
 # 신경망 (Neural Network)
 
 ## 1. 퍼셉트론 복습
+
 퍼셉트론을 복습해보면, 여러 개의 signal을 받아서 하나의 출력을 내는 구조이다.
 이해가 되지 않는다면, [복습하기](2_perceptron.md) 로 다시 공부하고 온다.
 
@@ -12,12 +13,13 @@
 
 우선, 신경망은 퍼셉트론에 비해 2가지 차이점이 존재한다.
     
-    1. 중간에 Hidden Layer가 존재한다.
-    2. 여러 개의 Output이 존재한다.
+1. 중간에 Hidden Layer가 존재한다.
+2. 여러 개의 Output이 존재한다.
 
 ------------
 
 ## 3. 활성화 함수 (Activation Function)
+
 <img src=../image/activation_function_procedure.png width=30%>
 
 Input signal를 받아서 Input signal의 총합을 Output signal로 변환하는 함수를 말한다.
@@ -61,6 +63,7 @@ Input signal를 받아서 Input signal의 총합을 Output signal로 변환하�
       - 어차피 softmax의 지수함수는 단조증가함수, input의 순위와 output의 순위가 동일하다.
 
 ### 3-2. 활성화 함수 써야하는 이유 : More Deeper
+
 다중 클래스 분류의 경우 위 그림이 수학적으로 어떻게 정의되는지 보자.
 
 $$ h = W_1x+b_1, o = W_2h+b_2, \hat y = softmax(o)$$
